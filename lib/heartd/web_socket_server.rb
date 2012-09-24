@@ -1,14 +1,14 @@
-module HeartD
+module Heartd
   module WebSocketServer
     extend self
 
     def run
       @subscribers = {}
       EM.run {
-        EM::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
-          ws.onopen(&onopen(ws))
-          ws.onclose(&onclose(ws))
-          ws.onmessage(&onmessage)
+        EM::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |socket|
+          socket.onopen(&onopen(socket))
+          socket.onclose(&onclose(socket))
+          socket.onmessage(&onmessage)
         end
       }
     end
@@ -36,6 +36,6 @@ module HeartD
     end
 
     extend Forwardable
-    def_delegators :HeartD, :channel
+    def_delegators :Heartd, :channel
   end
 end

@@ -6,7 +6,7 @@ require "em-websocket"
 require "heartd/web_socket_server"
 require "heartd/mongo_tail"
 
-module HeartD
+module Heartd
   extend self
 
   def run

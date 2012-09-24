@@ -5,7 +5,7 @@
 require 'json'
 require 'mongo'
 
-module HeartD
+module Heartd
   module MongoTail
     extend self
 
@@ -72,6 +72,6 @@ module HeartD
     end
 
     extend Forwardable
-    def_delegators :HeartD, :channel
+    def_delegators :Heartd, :channel
   end
 end

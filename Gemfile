@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'pry'
+group :development, :test do
+  gem 'pry'
+end
+
 gem 'slop'
 gem 'eventmachine'
-gem 'fluent-logger'
-gem 'configatron'
-gem 'fluent-plugin-mongo'
 gem 'em-websocket'
+gem 'fluent-plugin-mongo'
 gem 'bson_ext'
-
