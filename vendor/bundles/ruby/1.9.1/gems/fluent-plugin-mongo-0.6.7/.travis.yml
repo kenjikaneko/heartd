@@ -1,9 +1,0 @@
-rvm:
- - 1.9.2
- - 1.9.3
- - ruby-head
-
-before_script:
-  - git submodule update -i
-
-script: bundle exec rake test
