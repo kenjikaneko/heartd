@@ -1,0 +1,65 @@
+have_library: checking for main() in -lc... -------------------- yes
+
+"/usr/bin/clang -o conftest -I/opt/local/include/ruby-1.9.1/x86_64-darwin11 -I/opt/local/include/ruby-1.9.1/ruby/backward -I/opt/local/include/ruby-1.9.1 -I. -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/opt/local/include -pipe -O2  -arch x86_64 -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib -L. -L/opt/local/lib  -arch x86_64   -arch x86_64   -lruby.1.9.1  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"/usr/bin/clang -o conftest -I/opt/local/include/ruby-1.9.1/x86_64-darwin11 -I/opt/local/include/ruby-1.9.1/ruby/backward -I/opt/local/include/ruby-1.9.1 -I. -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/opt/local/include -pipe -O2  -arch x86_64 -fno-common conftest.c  -L. -L/opt/local/lib -L/opt/local/lib -L. -L/opt/local/lib  -arch x86_64   -arch x86_64   -lruby.1.9.1 -lc  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main() {return 0;}
+5: int t() { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_macro: checking for HAVE_RB_IO_T in rubyio.h... -------------------- yes
+
+"/usr/bin/clang -I/opt/local/include/ruby-1.9.1/x86_64-darwin11 -I/opt/local/include/ruby-1.9.1/ruby/backward -I/opt/local/include/ruby-1.9.1 -I. -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/opt/local/include -pipe -O2  -arch x86_64 -fno-common  -arch x86_64  -c conftest.c"
+In file included from conftest.c:3:
+/opt/local/include/ruby-1.9.1/ruby/backward/rubyio.h:2:2: warning: #warning use "ruby/io.h" instead of "rubyio.h" [-W#warnings]
+#warning use "ruby/io.h" instead of "rubyio.h"
+ ^
+1 warning generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <rubyio.h>
+4: /*top*/
+5: #ifndef HAVE_RB_IO_T
+6: # error
+7: >>>>>> HAVE_RB_IO_T undefined <<<<<<
+8: #endif
+/* end */
+
+--------------------
+
+have_struct_member: checking for rb_io_t.fd in rubyio.h... -------------------- yes
+
+"/usr/bin/clang -I/opt/local/include/ruby-1.9.1/x86_64-darwin11 -I/opt/local/include/ruby-1.9.1/ruby/backward -I/opt/local/include/ruby-1.9.1 -I. -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/opt/local/include -pipe -O2  -arch x86_64 -fno-common  -arch x86_64  -c conftest.c"
+In file included from conftest.c:3:
+/opt/local/include/ruby-1.9.1/ruby/backward/rubyio.h:2:2: warning: #warning use "ruby/io.h" instead of "rubyio.h" [-W#warnings]
+#warning use "ruby/io.h" instead of "rubyio.h"
+ ^
+1 warning generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <rubyio.h>
+4: 
+5: /*top*/
+6: int main() {return 0;}
+7: int s = (char *)&((rb_io_t*)0)->fd - (char *)0;
+/* end */
+
+--------------------
+

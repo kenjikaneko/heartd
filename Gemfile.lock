@@ -1,0 +1,55 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.3.2)
+    bson (1.7.0)
+    bson_ext (1.7.0)
+      bson (~> 1.7.0)
+    coderay (1.0.7)
+    configatron (2.9.1)
+      yamler (>= 0.1.0)
+    cool.io (1.1.0)
+      iobuffer (>= 1.0.0)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+    eventmachine (1.0.0)
+    fluent-logger (0.4.3)
+      msgpack (~> 0.4.4)
+      yajl-ruby (~> 1.0)
+    fluent-plugin-mongo (0.6.7)
+      fluentd (>= 0.10.7)
+      mongo (>= 1.6.0)
+    fluentd (0.10.25)
+      cool.io (~> 1.1.0)
+      http_parser.rb (~> 0.5.1)
+      json (>= 1.4.3)
+      msgpack (~> 0.4.4)
+      yajl-ruby (~> 1.0)
+    http_parser.rb (0.5.3)
+    iobuffer (1.1.2)
+    json (1.5.4)
+    method_source (0.8)
+    mongo (1.7.0)
+      bson (~> 1.7.0)
+    msgpack (0.4.7)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+    slop (3.3.3)
+    yajl-ruby (1.1.0)
+    yamler (0.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bson_ext
+  configatron
+  em-websocket
+  eventmachine
+  fluent-logger
+  fluent-plugin-mongo
+  pry
+  slop

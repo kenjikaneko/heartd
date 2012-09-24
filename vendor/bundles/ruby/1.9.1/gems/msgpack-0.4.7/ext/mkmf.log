@@ -1,0 +1,37 @@
+have_header: checking for ruby/st.h... -------------------- yes
+
+"/usr/bin/clang -o conftest -I/opt/local/include/ruby-1.9.1/x86_64-darwin11 -I/opt/local/include/ruby-1.9.1/ruby/backward -I/opt/local/include/ruby-1.9.1 -I. -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/opt/local/include -pipe -O2  -arch x86_64 -fno-common -I.. -Wall -O3 -DMESSAGEPACK_VERSION=\"0.4.7\" -g conftest.c  -L. -L/opt/local/lib -L/opt/local/lib -L. -L/opt/local/lib  -arch x86_64   -arch x86_64   -lruby.1.9.1  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"/usr/bin/clang -E -I/opt/local/include/ruby-1.9.1/x86_64-darwin11 -I/opt/local/include/ruby-1.9.1/ruby/backward -I/opt/local/include/ruby-1.9.1 -I. -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/opt/local/include -pipe -O2  -arch x86_64 -fno-common -I.. -Wall -O3 -DMESSAGEPACK_VERSION=\"0.4.7\" -g  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/st.h>
+/* end */
+
+--------------------
+
+have_header: checking for st.h... -------------------- yes
+
+"/usr/bin/clang -E -I/opt/local/include/ruby-1.9.1/x86_64-darwin11 -I/opt/local/include/ruby-1.9.1/ruby/backward -I/opt/local/include/ruby-1.9.1 -I. -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/opt/local/include -pipe -O2  -arch x86_64 -fno-common -I.. -Wall -O3 -DMESSAGEPACK_VERSION=\"0.4.7\" -g  conftest.c -o conftest.i"
+In file included from conftest.c:3:
+/opt/local/include/ruby-1.9.1/ruby/backward/st.h:2:2: warning: #warning use "ruby/st.h" instead of bare "st.h" [-W#warnings]
+#warning use "ruby/st.h" instead of bare "st.h"
+ ^
+1 warning generated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <st.h>
+/* end */
+
+--------------------
+
