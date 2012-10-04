@@ -14,7 +14,8 @@ module Heartd
     def run(opts = {})
       configure opts
 
-      raise ::ArgumentError unless collection = capped_collection(config)
+      collection = capped_collection()
+
       tail(collection, config)
     end
 
@@ -28,18 +29,22 @@ module Heartd
       }
     end
 
-    def capped_collection(conf)
-      db = Mongo::Connection.new(conf[:h], conf[:p]).db(conf[:d])
-      if db.collection_names.include?(conf[:c])
-        collection = db.collection(conf[:c])
-        if collection.capped?
-          collection
-        else
-          puts "#{conf[:c]} is not capped. mongo-tail can not tail normal collection."
-        end
-      else
-        puts "#{conf[:c]} not found: server = #{conf[:h]}:#{conf[:p]}"
+    def db
+      @db ||= Mongo::Connection.new(config[:h], config[:p]).db(config[:d])
+    end
+
+    def capped_collection
+      unless db.collection_names.include?(config[:c])
+        raise ::ArgumentError, "#{config[:c]} not found: server = #{conf[:h]}:#{conf[:p]}"
       end
+
+      collection = db.collection(config[:c])
+
+      unless collection.capped?
+        raise ::ArgumentError, "#{config[:c]} is not capped. mongo-tail can not tail normal collection."
+      end
+
+      collection
     end
 
     def create_cursor_conf(collection, conf)
@@ -61,7 +66,7 @@ module Heartd
 
         if doc = cursor.next_document
           d = doc.to_json
-          puts d
+          STDOUT.puts d
           channel << d
         else
           sleep 1
