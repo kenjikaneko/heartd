@@ -40,7 +40,7 @@ describe Heartd::MongoTail do
         proc { described_class.capped_collection }.should_not raise_error
       end
 
-      it "should return capped collection" do
+      it "return value except nil" do
         described_class.capped_collection.should_not be_nil
       end
     end

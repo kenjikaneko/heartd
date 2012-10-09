@@ -3,7 +3,9 @@
 require 'spec_helper'
 
 describe Heartd::WebSocketServer do
-
+  before(:each) do
+    STDOUT.stub(:puts)
+  end
   describe '#onopen' do
     let (:socket) { double(send: true) }
 
@@ -42,8 +44,8 @@ describe Heartd::WebSocketServer do
   end
 
   describe '#onmessage' do
-    let msg = "message"
-    context "call #onmessage's return object" do
+    let (:msg) { "message" }
+    context "when call proc return from #onmessage" do
       it "should send a message to the channel" do
         Heartd.channel.should_receive(:<<).with("Pong: #{msg}")
         described_class.onmessage.call(msg)

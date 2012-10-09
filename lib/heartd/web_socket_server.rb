@@ -9,7 +9,7 @@ module Heartd
     def run
       EM.run {
         EM::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |socket|
-         onstart(socket)
+          onstart(socket)
         end
       }
     end
@@ -32,15 +32,19 @@ module Heartd
     def onclose(socket)
       proc do
         channel.unsubscribe(subscribers[socket.object_id])
-        puts "Connection closed"
+        STDOUT.puts "Connection closed"
       end
     end
 
     def onmessage
       proc do |msg|
-        puts "Recieved message: #{msg}"
-        channel << "Pong: #{msg}"
+        STDOUT.puts "Recieved message: #{msg}"
+        channel << add_pong(msg)
       end
+    end
+
+    def add_pong(msg)
+      msg = "Pong: #{msg}"
     end
 
     extend Forwardable
